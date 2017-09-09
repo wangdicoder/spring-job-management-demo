@@ -11,8 +11,23 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/login")
-	public String login() {
-		return "login";
+	@RequestMapping(value="/active-jobs")
+	public String activeJobPage() {
+		return "active-jobs";
+	}
+	
+	@RequestMapping(value="/draft-jobs")
+	public String draftJobPage() {
+		return "draft-jobs";
+	}
+	
+	@RequestMapping(value="/expired-jobs")
+	public String expiredJobPage() {
+		return "expired-jobs";
+	}
+	
+	@RequestMapping(value="/new-job")
+	public String newJobPage() {
+		return "new-job";
 	}
 }

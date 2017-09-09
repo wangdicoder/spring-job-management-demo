@@ -1,4 +1,4 @@
-package com.resmia.entity;
+package com.resmia.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

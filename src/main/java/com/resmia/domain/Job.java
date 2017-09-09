@@ -1,4 +1,4 @@
-package com.resmia.entity;
+package com.resmia.domain;
 
 import javax.persistence.*;
 

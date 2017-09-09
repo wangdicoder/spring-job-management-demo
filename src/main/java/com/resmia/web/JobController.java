@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.resmia.entity.IJobRepository;
-import com.resmia.entity.Job;
+import com.resmia.domain.IJobRepository;
+import com.resmia.domain.Job;
 
 @RestController
 @RequestMapping(value="/api/jobs")
