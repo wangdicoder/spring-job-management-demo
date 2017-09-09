@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Resmia Hire</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
@@ -33,20 +33,26 @@
 			<tr>
 				<th>#</th>
 				<th>Job Title</th>
-				<th>Catrgory</th>
+				<th>Category</th>
 				<th>Location</th>
 				<th>Work Type</th>
-				<th>Salary Type</th>
+				<th>Salary</th>
 				<th>Contract</th>
+				<th>Youtube</th>
 			</tr>
-			<tr>
-				<td>1</td>
-				<td>Job Title</td>
-				<td>Job Type</td>
+			<tr th:each="job : ${joblist}">
+				<td th:text="${job.id}"></td>
+				<td th:text="${job.jobTitle}"></td>
+				<td th:text="${job.category}"></td>
+				<td th:text="${job.location}"></td>
+				<td th:text="${job.workType}"></td>
+				<td th:text="${job.income} + '/' + ${job.salaryType}"></td>
+				<td th:text="${job.contactInfo}"></td>
+				<td><a th:href="${job.youtubeLink}" target="_blank">View</a></td>
 			</tr>
 		</table>
 		<div class="statistic-row">
-			<span>Total 5 records</span>
+			<span th:text="'Total ' + ${#lists.size(joblist)} + ' record(s)'"></span>
 		</div>
 	</div>
 </div>

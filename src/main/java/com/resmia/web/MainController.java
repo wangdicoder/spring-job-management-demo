@@ -1,10 +1,17 @@
 package com.resmia.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.resmia.domain.IJobRepository;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private IJobRepository jobRepository;
 	
 	@RequestMapping(value="/")
 	public String index() {
@@ -12,12 +19,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/active-jobs")
-	public String activeJobPage() {
+	public String activeJobPage(Model model) {
+		model.addAttribute("activeList", jobRepository.findByStatusEquals(1));
 		return "active-jobs";
 	}
 	
 	@RequestMapping(value="/draft-jobs")
-	public String draftJobPage() {
+	public String draftJobPage(Model model) {
+		model.addAttribute("joblist", jobRepository.findByStatusEquals(0));
 		return "draft-jobs";
 	}
 	
