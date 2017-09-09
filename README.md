@@ -1,29 +1,47 @@
-# README #
+# Resmia Hire
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A demo project of spring boot
 
-### What is this repository for? ###
+## Feature
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+- RESFful
 
-### How do I get set up? ###
+- Thymeleaf template
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- Nested package structure
 
-### Contribution guidelines ###
+- Beautiful user interface
 
-* Writing tests
-* Code review
-* Other guidelines
+- MySQL database
 
-### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+## How to run it
+
+1. git clone https://github.com/wangdicoder/spring-job-management-demo.git
+
+2. import gradle project via Eclipse or Intellij IDE
+
+3. `create database resmia` via mysql command
+
+4. set up your mysql database account and password in the `application.properties` file
+
+5. run `ResmiaApplication.java` file or using gradle command. 
+
+## Screenshots
+
+### Login
+
+![](https://github.com/wangdicoder/spring-job-management-demo/raw/master/screenshot/login.png)
+
+### Job List
+
+![](https://github.com/wangdicoder/spring-job-management-demo/raw/master/screenshot/list.png)
+
+### Post/Edit a Job Info
+
+![](https://github.com/wangdicoder/spring-job-management-demo/raw/master/screenshot/post.png)
+
+
+## License
+
+MIT
