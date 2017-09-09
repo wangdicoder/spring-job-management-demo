@@ -47,8 +47,14 @@
 					</div>
 					<div class="row-right">
 						<select class="form-controller" th:value="${jobInfo.category}" id="category">
-							<option value="IT" th:selected="${jobInfo.category == 'IT'}">IT</option>
+							
 							<option value="Accounting" th:selected="${jobInfo.category == 'Accounting'}">Accounting</option>
+							<option value="Administration" th:selected="${jobInfo.category == 'Administration'}">Administration</option>
+							<option value="Consulting" th:selected="${jobInfo.category == 'Consulting'}">Consulting</option>
+							<option value="Architecture" th:selected="${jobInfo.category == 'Architecture'}">Architecture</option>
+							<option value="Engineering" th:selected="${jobInfo.category == 'Engineering'}">Engineering</option>
+							<option value="Healthcare" th:selected="${jobInfo.category == 'Healthcare'}">Healthcare</option>
+							<option value="Information Technology" th:selected="${jobInfo.category == 'Information Technology'}">Information Technology</option>
 							<option value="Law" th:selected="${jobInfo.category == 'Law'}">Law</option>
 							<option value="Education" th:selected="${jobInfo.category == 'Education'}">Education</option>
 						</select>
