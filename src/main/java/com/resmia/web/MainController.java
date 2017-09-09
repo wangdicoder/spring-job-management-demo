@@ -3,9 +3,11 @@ package com.resmia.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.resmia.domain.IJobRepository;
+import com.resmia.domain.Job;
 
 @Controller
 public class MainController {
@@ -20,7 +22,7 @@ public class MainController {
 	
 	@RequestMapping(value="/active-jobs")
 	public String activeJobPage(Model model) {
-		model.addAttribute("activeList", jobRepository.findByStatusEquals(1));
+		model.addAttribute("joblist", jobRepository.findByStatusEquals(1));
 		return "active-jobs";
 	}
 	
@@ -31,12 +33,20 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/expired-jobs")
-	public String expiredJobPage() {
+	public String expiredJobPage(Model model) {
+		model.addAttribute("joblist", jobRepository.findByStatusEquals(-1));
 		return "expired-jobs";
 	}
 	
 	@RequestMapping(value="/new-job")
-	public String newJobPage() {
+	public String newJobPage(Model model) {
+		model.addAttribute("jobInfo", new Job());
+		return "new-job";
+	}
+	
+	@RequestMapping(value="/update-job/{id}")
+	public String updateInfo(@PathVariable Long id, Model model) {
+		model.addAttribute("jobInfo", jobRepository.findOne(id));
 		return "new-job";
 	}
 }

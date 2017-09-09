@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Resmia Hire</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/>
 </head>
 <body>
@@ -33,20 +34,31 @@
 			<tr>
 				<th>#</th>
 				<th>Job Title</th>
-				<th>Catrgory</th>
+				<th>Category</th>
 				<th>Location</th>
 				<th>Work Type</th>
-				<th>Salary Type</th>
-				<th>Contract</th>
+				<th>Salary</th>
+				<th>Contact</th>
+				<th>Youtube</th>
+				<th>Actions</th>
 			</tr>
-			<tr>
-				<td>1</td>
-				<td>Job Title</td>
-				<td>Job Type</td>
+			<tr th:each="job,iterStat : ${joblist}">
+				<td th:text="${iterStat.index + 1}"></td>
+				<td th:text="${job.jobTitle}"></td>
+				<td th:text="${job.category}"></td>
+				<td th:text="${job.location}"></td>
+				<td th:text="${job.workType}"></td>
+				<td th:text="${job.income} + '/' + ${job.salaryType}"></td>
+				<td th:text="${job.contactInfo}"></td>
+				<td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">View</a></td>
+				<td>
+					<button class="btn edit-btn">Edit</button>
+					<button class="btn delete-btn">Delete</button>
+				</td>
 			</tr>
 		</table>
 		<div class="statistic-row">
-			<span>Total 1 records</span>
+			<span th:text="'Total ' + ${#lists.size(joblist)} + ' record(s)'"></span>
 		</div>
 	</div>
 </div>

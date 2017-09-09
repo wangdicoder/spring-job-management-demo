@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Resmia Hire</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/>
 </head>
 <body>
@@ -16,9 +17,9 @@
 	</div>
 	<div class="list-container">
 		<li><a href="/active-jobs.html"><i class="material-icons">highlight</i><span>Active Jobs</span></a></li>
-		<li><a href="#"><i class="material-icons">drafts</i><span>Draft Jobs</span></a></li>
+		<li><a href="/draft-jobs.html"><i class="material-icons">drafts</i><span>Draft Jobs</span></a></li>
 		<li><a href="/expired-jobs.html"><i class="material-icons">history</i><span>Expired Jobs</span></a></li>
-		<li class="active"><a href="/new-job.html"><i class="material-icons">add</i><span>Post Job</span></a></li>
+		<li class="active"><a href="#"><i class="material-icons">add</i><span>Post Job</span></a></li>
 	</div>
 </div>
 <div class="content-container">
@@ -37,7 +38,7 @@
 						<span class="">Job Title</span>
 					</div>
 					<div class="row-right">
-						<input type="text" name="jobTitle" class="form-controller" />
+						<input type="text" id="jobTitle" class="form-controller" th:value="${jobInfo.jobTitle}" />
 					</div>
 				</div>
 				<div class="row">
@@ -45,11 +46,11 @@
 						<span class="">Category</span>
 					</div>
 					<div class="row-right">
-						<select class="form-controller" >
-							<option>IT</option>
-							<option>Accounting</option>
-							<option>Law</option>
-							<option>Education</option>
+						<select class="form-controller" th:value="${jobInfo.category}" id="category">
+							<option value="IT">IT</option>
+							<option value="Accounting">Accounting</option>
+							<option value="Law">Law</option>
+							<option value="Education">Education</option>
 						</select>
 					</div>
 				</div>
@@ -58,7 +59,7 @@
 						<span class="">Location</span>
 					</div>
 					<div class="row-right">
-						<input type="text" name="jobTitle" class="form-controller" />
+						<input type="text" id="location" class="form-controller" th:value="${jobInfo.location}" />
 					</div>
 				</div>
 				<div class="row">
@@ -66,11 +67,11 @@
 						<span class="">Work Type</span>
 					</div>
 					<div class="row-right">
-						<select class="form-controller" >
-							<option>Full-time</option>
-							<option>Part-time</option>
-							<option>Project</option>
-							<option>Casual</option>
+						<select class="form-controller" th:value="${jobInfo.workType}" id="workType">
+							<option value="Full-time">Full-time</option>
+							<option value="Part-time">Part-time</option>
+							<option value="Project">Project</option>
+							<option value="Casual">Casual</option>
 						</select>
 					</div>
 				</div>
@@ -82,7 +83,7 @@
 			</div>
 			<div class="body">
 				<div class="row">
-					<textarea class="form-controller textare"></textarea>
+					<textarea class="form-controller textare" th:text="${jobInfo.description}" id="desc"></textarea>
 				</div>
 				
 			</div>
@@ -97,11 +98,11 @@
 						<span class="">Salary Type</span>
 					</div>
 					<div class="row-right">
-						<select class="form-controller" >
-							<option>Year</option>
-							<option>Month</option>
-							<option>Day</option>
-							<option>Hour</option>
+						<select class="form-controller" th:value="${jobInfo.salaryType}" id="salaryType">
+							<option value="Year">Year</option>
+							<option value="Month">Month</option>
+							<option value="Day">Day</option>
+							<option value="Hour">Hour</option>
 						</select>
 					</div>
 				</div>
@@ -110,7 +111,7 @@
 						<span class="">Income</span>
 					</div>
 					<div class="row-right">
-						<input type="text" name="jobTitle" class="form-controller" />
+						<input type="text" id="income" class="form-controller" th:value="${jobInfo.income}"/>
 					</div>
 				</div>
 			</div>
@@ -125,7 +126,7 @@
 						<span class="">Contact Information</span>
 					</div>
 					<div class="row-right">
-						<input type="text" name="jobTitle" class="form-controller" />
+						<input type="text" id="contactInfo" class="form-controller" th:value="${jobInfo.contactInfo}"/>
 					</div>
 				</div>
 				<div class="row">
@@ -133,13 +134,76 @@
 						<span class="">Youtube Address</span>
 					</div>
 					<div class="row-right">
-						<input type="text" name="jobTitle" class="form-controller" />
+						<input type="text" id="youtubeLink" class="form-controller" th:value="${jobInfo.youtubeLink}"/>
 					</div>
 				</div>
 			</div>
 		</div>
-		<input type="submit" name="submit" class="submit"/>
+		<button class="submit" th:onclick="|submit('${jobInfo.id}')|">Submit</button>
+		<button class="save-as-draft" th:onclick="|draft('${jobInfo.id}')|">Save as draft</button>
 	</div>
 </div>
+<script type="text/javascript">
+	function submit(id){
+		const status = 1;
+		const jobTitle = $('#jobTitle').val();
+		const category = $('#category').val();
+		const location = $('#location').val();
+		const workType = $('#workType').val();
+		const description = $('#desc').val();
+		const salaryType = $('#salaryType').val();
+		const income = $('#income').val();
+		const contactInfo = $('#contactInfo').val();
+		const youtubeLink = $('#youtubeLink').val();
+
+		if(parseInt(id)){  //update
+			console.log('update');
+			$.ajax({
+				url: '/api/jobs/' + id,
+				method: 'PUT',
+				contentType:"application/json; charset=utf-8",
+  				dataType:"json",
+				data: JSON.stringify({jobTitle, status, category, location, workType, description, salaryType, income, contactInfo, youtubeLink}),
+			}).done(function(data){
+				window.location.href = "/new-job";
+			});
+
+		}else{  // add
+			console.log('add');
+			$.ajax({
+				url: '/api/jobs',
+				method: 'POST',
+				contentType:"application/json; charset=utf-8",
+  				dataType:"json",
+				data: JSON.stringify({jobTitle, status, category, location, workType, description, salaryType, income, contactInfo, youtubeLink}),
+			}).done(function(data){
+				window.location.href = "/new-job";
+			});
+		}
+	}
+
+	function draft(id){
+		const status = 0;
+		const jobTitle = $('#jobTitle').val();
+		const category = $('#category').val();
+		const location = $('#location').val();
+		const workType = $('#workType').val();
+		const description = $('#desc').val();
+		const salaryType = $('#salaryType').val();
+		const income = $('#income').val();
+		const contactInfo = $('#contactInfo').val();
+		const youtubeLink = $('#youtubeLink').val();
+
+		$.ajax({
+			url: '/api/jobs',
+			method: 'POST',
+			contentType:"application/json; charset=utf-8",
+  			dataType:"json",
+			data: JSON.stringify({jobTitle, status, category, location, workType, description, salaryType, income, contactInfo, youtubeLink}),
+		}).done(function(data){
+			window.location.href = "/new-job";
+		});
+	}
+</script>
 </body>
 </html>

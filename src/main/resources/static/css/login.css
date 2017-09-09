@@ -5,7 +5,9 @@ html, body{
 }
 
 body{
-	background: linear-gradient(to bottom, rgb(184,223,255), rgb(114,187,253));
+	/* background: linear-gradient(to bottom, rgb(184,223,255), rgb(114,187,253)); */
+	background: url("/images/bg.jpg") center, center;
+	background-size: cover;
 	display: flex;
 	justify-content: center;
 	align-items: center;
