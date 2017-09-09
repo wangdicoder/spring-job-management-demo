@@ -1,3 +1,6 @@
+/**
+ * page controller
+ */
 package com.resmia.web;
 
 import org.springframework.beans.factory.annotation.Autowired;

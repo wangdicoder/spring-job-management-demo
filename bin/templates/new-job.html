@@ -47,10 +47,10 @@
 					</div>
 					<div class="row-right">
 						<select class="form-controller" th:value="${jobInfo.category}" id="category">
-							<option value="IT">IT</option>
-							<option value="Accounting">Accounting</option>
-							<option value="Law">Law</option>
-							<option value="Education">Education</option>
+							<option value="IT" th:selected="${jobInfo.category == 'IT'}">IT</option>
+							<option value="Accounting" th:selected="${jobInfo.category == 'Accounting'}">Accounting</option>
+							<option value="Law" th:selected="${jobInfo.category == 'Law'}">Law</option>
+							<option value="Education" th:selected="${jobInfo.category == 'Education'}">Education</option>
 						</select>
 					</div>
 				</div>
@@ -68,10 +68,10 @@
 					</div>
 					<div class="row-right">
 						<select class="form-controller" th:value="${jobInfo.workType}" id="workType">
-							<option value="Full-time">Full-time</option>
-							<option value="Part-time">Part-time</option>
-							<option value="Project">Project</option>
-							<option value="Casual">Casual</option>
+							<option value="Full-time" th:selected="${jobInfo.workType == 'Full-time'}">Full-time</option>
+							<option value="Part-time" th:selected="${jobInfo.workType == 'Part-time'}">Part-time</option>
+							<option value="Project" th:selected="${jobInfo.workType == 'Project'}">Project</option>
+							<option value="Casual" th:selected="${jobInfo.workType == 'Casual'}">Casual</option>
 						</select>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 		</div>
 		<div class="panel">
 			<div class="header">
-				<span>Job Desciption</span>
+				<span>Job Description</span>
 			</div>
 			<div class="body">
 				<div class="row">
@@ -99,10 +99,10 @@
 					</div>
 					<div class="row-right">
 						<select class="form-controller" th:value="${jobInfo.salaryType}" id="salaryType">
-							<option value="Year">Year</option>
-							<option value="Month">Month</option>
-							<option value="Day">Day</option>
-							<option value="Hour">Hour</option>
+							<option value="Year" th:selected="${jobInfo.salaryType == 'Year'}">Year</option>
+							<option value="Month" th:selected="${jobInfo.salaryType == 'Month'}">Month</option>
+							<option value="Day" th:selected="${jobInfo.salaryType == 'Day'}">Day</option>
+							<option value="Hour" th:selected="${jobInfo.salaryType == 'Hour'}">Hour</option>
 						</select>
 					</div>
 				</div>
@@ -144,6 +144,9 @@
 	</div>
 </div>
 <script type="text/javascript">
+	$(document).ready(function() {
+	});
+
 	function submit(id){
 		const status = 1;
 		const jobTitle = $('#jobTitle').val();

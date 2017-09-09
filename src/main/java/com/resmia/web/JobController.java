@@ -1,3 +1,6 @@
+/**
+ * RESTful api for job table
+ */
 package com.resmia.web;
 
 import java.util.List;

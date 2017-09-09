@@ -52,8 +52,8 @@
 				<td th:text="${job.contactInfo}"></td>
 				<td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">View</a></td>
 				<td>
-					<button class="btn edit-btn">Edit</button>
-					<button class="btn delete-btn">Delete</button>
+					<button class="btn edit-btn" th:onclick="|editInfo('${job.id}')|">Edit</button>
+					<button class="btn delete-btn" th:onclick="|deleteInfo('${job.id}')|">Delete</button>
 				</td>
 			</tr>
 		</table>
@@ -62,5 +62,28 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	
+});
+
+function deleteInfo(id){
+	if(window.confirm('Are you sure to delete it?')){
+		const url = 'api/jobs/' + id;
+		$.ajax({
+			url,
+			type: 'DELETE',
+			success: function(result) {
+				location.reload();
+			}
+		});
+	}
+}
+
+function editInfo(id){
+	window.location.href = '/update-job/' + id;
+}
+</script>
 </body>
 </html>
