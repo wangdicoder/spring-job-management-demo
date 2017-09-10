@@ -1,11 +1,11 @@
 package com.resmia.utils;
 
-public class MyResponse {
+public class Response {
 	private String message;
 	private int status;
 	private Object data;
 	
-	public MyResponse(int staus, String mesage, Object data) {
+	public Response(int staus, String mesage, Object data) {
 		this.message = mesage;
 		this.status = staus;
 		this.data = data;

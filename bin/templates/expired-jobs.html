@@ -37,7 +37,8 @@
 				<th>Category</th>
 				<th>Location</th>
 				<th>Work Type</th>
-				<th>Salary</th>
+				<th>Salary Type</th>
+				<th>Income</th>
 				<th>Contact</th>
 				<th>Youtube</th>
 				<th>Actions</th>
@@ -48,7 +49,8 @@
 				<td th:text="${job.category}"></td>
 				<td th:text="${job.location}"></td>
 				<td th:text="${job.workType}"></td>
-				<td th:text="${job.income} + '/' + ${job.salaryType}"></td>
+				<td th:text="${job.salaryType}"></td>
+				<td th:text="'$' + ${job.income}"></td>
 				<td th:text="${job.contactInfo}"></td>
 				<td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">View</a></td>
 				<td>

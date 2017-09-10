@@ -1,13 +1,15 @@
 package com.resmia.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.resmia.domain.Job;
-import com.resmia.utils.MyResponse;
+import com.resmia.utils.Response;
 
 public interface IJobService {
-	List<Job> getAllJobsInfo();
-	MyResponse addJobInfo(Job job);
-	Job getJobInfo(Long id);
-	MyResponse updateJobInfo(Job job, Long id);
-	MyResponse deleteJobInfo(Long id);
+	List<Job> getAllJobs();
+	Response createJob(Job job);
+	Job getJob(Long id);
+	Response updateJob(Job job, Long id);
+	Response deleteJob(Long id);
+	ArrayList<Job> getJobByStatusValue(int status);
 }

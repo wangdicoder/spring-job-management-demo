@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.resmia.domain.Job;
 import com.resmia.service.JobServiceImpl;
-import com.resmia.utils.MyResponse;
+import com.resmia.utils.Response;
 
 @RestController
 @RequestMapping(value="/api/jobs")
@@ -28,27 +28,27 @@ public class JobController {
 	
 	@GetMapping
 	public List<Job> getAll(){
-		return jobService.getAllJobsInfo();
+		return jobService.getAllJobs();
 	}
 	
 	@PostMapping
-	public MyResponse saveJobInfo(@RequestBody Job job) {
-		return jobService.addJobInfo(job);
+	public Response saveJobInfo(@RequestBody Job job) {
+		return jobService.createJob(job);
 	}
 	
 	@GetMapping(value="/{id}")
 	public Job getJobInfo(@PathVariable Long id) {
-		return jobService.getJobInfo(id);
+		return jobService.getJob(id);
 	}
 	
 	@PutMapping(value="/{id}")
-	public MyResponse getJobInfo(@RequestBody Job job, @PathVariable Long id) {
-		return jobService.updateJobInfo(job, id);
+	public Response updateJobInfo(@RequestBody Job job, @PathVariable Long id) {
+		return jobService.updateJob(job, id);
 	}
 	
 	@DeleteMapping(value="/{id}")
-	public MyResponse deleteJobInfo(@PathVariable Long id) {
-		return jobService.deleteJobInfo(id);
+	public Response deleteJobInfo(@PathVariable Long id) {
+		return jobService.deleteJob(id);
 	}
 
 }

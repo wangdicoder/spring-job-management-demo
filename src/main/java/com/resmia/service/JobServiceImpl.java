@@ -1,12 +1,13 @@
 package com.resmia.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.resmia.domain.Job;
 import com.resmia.repo.IJobRepository;
-import com.resmia.utils.MyResponse;
+import com.resmia.utils.Response;
 
 @Service
 public class JobServiceImpl implements IJobService{
@@ -15,44 +16,49 @@ public class JobServiceImpl implements IJobService{
 	private IJobRepository jobRepository;
 
 	@Override
-	public List<Job> getAllJobsInfo() {
+	public List<Job> getAllJobs() {
 		return jobRepository.findAll();
 	}
 
 	@Override
-	public MyResponse addJobInfo(Job job) {
+	public Response createJob(Job job) {
 		try {
 			jobRepository.save(job);
-			return new MyResponse(200, "add data successfully", null);
+			return new Response(200, "add data successfully", null);
 		}catch (Exception e) {
-			return new MyResponse(500, "add data failed", null);
+			return new Response(500, "add data failed", null);
 		}
 	}
 
 	@Override
-	public Job getJobInfo(Long id) {
+	public Job getJob(Long id) {
 		return jobRepository.findOne(id);
 	}
 
 	@Override
-	public MyResponse updateJobInfo(Job job, Long id) {
+	public Response updateJob(Job job, Long id) {
 		try {
 			job.setId(id);
 			jobRepository.save(job);
-			return new MyResponse(200, "update data successfully", null);
+			return new Response(200, "update data successfully", null);
 		}catch (Exception e) {
-			return new MyResponse(500, "update data failed", null);
+			return new Response(500, "update data failed", null);
 		}
 	}
 
 	@Override
-	public MyResponse deleteJobInfo(Long id) {
+	public Response deleteJob(Long id) {
 		try {
 			jobRepository.delete(id);
-			return new MyResponse(200, "delete data successfully", null);
+			return new Response(200, "delete data successfully", null);
 		}catch (Exception e) {
-			return new MyResponse(500, "delete data failed", null);
+			return new Response(500, "delete data failed", null);
 		}
+	}
+
+	@Override
+	public ArrayList<Job> getJobByStatusValue(int status) {
+		return jobRepository.findByStatusEquals(status);
 	}
 
 }

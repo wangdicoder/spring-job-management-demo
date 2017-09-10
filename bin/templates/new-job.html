@@ -76,8 +76,8 @@
 						<select class="form-controller" th:value="${jobInfo.workType}" id="workType">
 							<option value="Full-time" th:selected="${jobInfo.workType == 'Full-time'}">Full-time</option>
 							<option value="Part-time" th:selected="${jobInfo.workType == 'Part-time'}">Part-time</option>
-							<option value="Project" th:selected="${jobInfo.workType == 'Project'}">Project</option>
-							<option value="Casual" th:selected="${jobInfo.workType == 'Casual'}">Casual</option>
+							<option value="Contract/Temp" th:selected="${jobInfo.workType == 'Contract/Temp'}">Contract/Temp</option>
+							<option value="Casual/Vacation" th:selected="${jobInfo.workType == 'Casual/Vacation'}">Casual/Vacation</option>
 						</select>
 					</div>
 				</div>
@@ -105,10 +105,10 @@
 					</div>
 					<div class="row-right">
 						<select class="form-controller" th:value="${jobInfo.salaryType}" id="salaryType">
-							<option value="Year" th:selected="${jobInfo.salaryType == 'Year'}">Year</option>
-							<option value="Month" th:selected="${jobInfo.salaryType == 'Month'}">Month</option>
-							<option value="Day" th:selected="${jobInfo.salaryType == 'Day'}">Day</option>
-							<option value="Hour" th:selected="${jobInfo.salaryType == 'Hour'}">Hour</option>
+							<option value="Annual Salary Package" th:selected="${jobInfo.salaryType == 'Annual Salary Package'}">Annual Salary Package</option>
+							<option value="Annual + Commission" th:selected="${jobInfo.salaryType == 'Annual + Commission'}">Annual + Commission</option>
+							<option value="Commission" th:selected="${jobInfo.salaryType == 'Commission'}">Commission</option>
+							<option value="Hourly" th:selected="${jobInfo.salaryType == 'Hour'}">Hourly</option>
 						</select>
 					</div>
 				</div>

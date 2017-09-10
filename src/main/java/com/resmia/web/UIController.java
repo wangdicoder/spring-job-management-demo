@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.resmia.domain.Job;
 import com.resmia.repo.IJobRepository;
+import com.resmia.service.JobServiceImpl;
 
 @Controller
-public class MainController {
+public class UIController {
 	
 	@Autowired
-	private IJobRepository jobRepository;
+	private JobServiceImpl jobService;
 	
 	@RequestMapping(value="/")
 	public String index() {
@@ -25,19 +26,19 @@ public class MainController {
 	
 	@RequestMapping(value="/active-jobs")
 	public String activeJobPage(Model model) {
-		model.addAttribute("joblist", jobRepository.findByStatusEquals(1));
+		model.addAttribute("joblist", jobService.getJobByStatusValue(1));
 		return "active-jobs";
 	}
 	
 	@RequestMapping(value="/draft-jobs")
 	public String draftJobPage(Model model) {
-		model.addAttribute("joblist", jobRepository.findByStatusEquals(0));
+		model.addAttribute("joblist", jobService.getJobByStatusValue(0));
 		return "draft-jobs";
 	}
 	
 	@RequestMapping(value="/expired-jobs")
 	public String expiredJobPage(Model model) {
-		model.addAttribute("joblist", jobRepository.findByStatusEquals(-1));
+		model.addAttribute("joblist", jobService.getJobByStatusValue(-1));
 		return "expired-jobs";
 	}
 	
@@ -48,8 +49,8 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/update-job/{id}")
-	public String updateInfo(@PathVariable Long id, Model model) {
-		model.addAttribute("jobInfo", jobRepository.findOne(id));
+	public String updateJonPage(@PathVariable Long id, Model model) {
+		model.addAttribute("jobInfo", jobService.getJob(id));
 		return "new-job";
 	}
 }
