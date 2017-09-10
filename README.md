@@ -4,7 +4,7 @@ A demo project of spring boot
 
 ## Feature
 
-- RESFful
+- RESTful api
 
 - Thymeleaf template
 
