@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Resmia Hire</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+</head>
+<body>
+<div class="dashboard">
+	<div class="logo">
+		<img src="/images/logo.png" alt="logo" />
+	</div>
+	<div class="list-container">
+		<li><a href="/active-jobs.html"><i class="material-icons">highlight</i><span>Active Jobs</span></a></li>
+		<li><a href="/draft-jobs.html"><i class="material-icons">drafts</i><span>Draft Jobs</span></a></li>
+		<li><a href="/expired-jobs.html"><i class="material-icons">history</i><span>Expired Jobs</span></a></li>
+		<li><a href="/new-job.html"><i class="material-icons">add</i><span>Post Job</span></a></li>
+	</div>
+</div>
+<div class="content-container">
+	<div class="user-row">
+		<button class="exit-btn"><i class="material-icons">exit_to_app</i></button>
+		<span>Hi, Johann</span>
+	</div>
+	<div class="content">
+		<div class="panel">
+			<div class="header">
+				<span>Basic Information</span>
+			</div>
+			<div class="body">
+				<div class="row">
+					<div class="row-left">
+						<span class="">Job Title</span>
+					</div>
+					<div class="row-right">
+						<label th:text="${jobInfo.jobTitle}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="row-left">
+						<span class="">Category</span>
+					</div>
+					<div class="row-right">
+						<label th:text="${jobInfo.category}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="row-left">
+						<span class="">Location</span>
+					</div>
+					<div class="row-right">
+						<label th:text="${jobInfo.location}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="row-left">
+						<span class="">Work Type</span>
+					</div>
+					<div class="row-right">
+						<label th:text="${jobInfo.workType}" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="header">
+				<span>Job Description</span>
+			</div>
+			<div class="body">
+				<div class="row">
+					<label th:text="${jobInfo.description}" />
+				</div>
+				
+			</div>
+		</div>
+		<div class="panel">
+			<div class="header">
+				<span>Salary Settings</span>
+			</div>
+			<div class="body">
+				<div class="row">
+					<div class="row-left">
+						<span class="">Salary Type</span>
+					</div>
+					<div class="row-right">
+						<label th:text="${jobInfo.salaryType}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="row-left">
+						<span class="">Income</span>
+					</div>
+					<div class="row-right">
+						<label th:text="'$' + ${jobInfo.income}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="header">
+				<span>Other Inforamtion</span>
+			</div>
+			<div class="body">
+				<div class="row">
+					<div class="row-left">
+						<span class="">Contact Information</span>
+					</div>
+					<div class="row-right">
+						<label th:text="${jobInfo.contactInfo}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="row-left">
+						<span class="">Youtube Address</span>
+					</div>
+					<div class="row-right">
+						<a th:href="${jobInfo.youtubeLink}" target="_blank" th:text="${jobInfo.youtubeLink}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

@@ -109,8 +109,16 @@ td{
     font-size: 14px;
     padding: 15px 5px;
 }
+tr:hover{
+	box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(14,141,254,.4);
+}
 tr{
 	border-bottom: 1px solid #ccc;
+	transition: all 400ms;
+}
+tr:first-child{
+	box-shadow: none;
+	transition: all 400ms;
 }
 .statistic-row{
 	padding: 5px 3px;
@@ -227,9 +235,12 @@ tr{
 	cursor: pointer;
 	font-size: 13px;
 }
-.edit-btn{
+.view-btn{
 	color: #2d9bea;
 	margin-right: 10px;
+}
+.edit-btn{
+	color: #00a699;
 }
 .delete-btn{
 	color: #ff0000;

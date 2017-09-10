@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.resmia.domain.Job;
-import com.resmia.repo.IJobRepository;
 import com.resmia.service.JobServiceImpl;
 
 @Controller
@@ -46,6 +45,12 @@ public class UIController {
 	public String newJobPage(Model model) {
 		model.addAttribute("jobInfo", new Job());
 		return "new-job";
+	}
+	
+	@RequestMapping(value="/view-job/{id}")
+	public String viewJobPage(@PathVariable Long id, Model model) {
+		model.addAttribute("jobInfo", jobService.getJob(id));
+		return "view-job";
 	}
 	
 	@RequestMapping(value="/update-job/{id}")

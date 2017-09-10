@@ -52,8 +52,9 @@
 				<td th:text="${job.salaryType}"></td>
 				<td th:text="'$' + ${job.income}"></td>
 				<td th:text="${job.contactInfo}"></td>
-				<td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">View</a></td>
+				<td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">Open</a></td>
 				<td>
+					<button class="btn view-btn" th:onclick="|viewInfo('${job.id}')|">View</button>
 					<button class="btn edit-btn" th:onclick="|editInfo('${job.id}')|">Edit</button>
 					<button class="btn delete-btn" th:onclick="|deleteInfo('${job.id}')|">Delete</button>
 				</td>
@@ -85,6 +86,10 @@ function deleteInfo(id){
 
 function editInfo(id){
 	window.location.href = '/update-job/' + id;
+}
+
+function viewInfo(id){
+	window.location.href = '/view-job/' + id;
 }
 </script>
 </body>

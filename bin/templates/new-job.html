@@ -117,7 +117,7 @@
 						<span class="">Income</span>
 					</div>
 					<div class="row-right">
-						<input type="text" id="income" class="form-controller" th:value="${jobInfo.income}"/>
+						<input type="number" id="income" class="form-controller" th:value="${jobInfo.income}"/>
 					</div>
 				</div>
 			</div>
@@ -166,7 +166,7 @@
 		const youtubeLink = $('#youtubeLink').val();
 
 		if(parseInt(id)){  //update
-			console.log('update');
+			//console.log('update');
 			$.ajax({
 				url: '/api/jobs/' + id,
 				method: 'PUT',
@@ -174,11 +174,11 @@
   				dataType:"json",
 				data: JSON.stringify({jobTitle, status, category, location, workType, description, salaryType, income, contactInfo, youtubeLink}),
 			}).done(function(data){
-				window.location.href = "/new-job";
+				window.location.href = "/active-jobs";
 			});
 
 		}else{  // add
-			console.log('add');
+			//console.log('add');
 			$.ajax({
 				url: '/api/jobs',
 				method: 'POST',
@@ -186,7 +186,7 @@
   				dataType:"json",
 				data: JSON.stringify({jobTitle, status, category, location, workType, description, salaryType, income, contactInfo, youtubeLink}),
 			}).done(function(data){
-				window.location.href = "/new-job";
+				window.location.href = "/active-jobs";
 			});
 		}
 	}
@@ -210,7 +210,7 @@
   			dataType:"json",
 			data: JSON.stringify({jobTitle, status, category, location, workType, description, salaryType, income, contactInfo, youtubeLink}),
 		}).done(function(data){
-			window.location.href = "/new-job";
+			window.location.href = "/draft-jobs";
 		});
 	}
 </script>
