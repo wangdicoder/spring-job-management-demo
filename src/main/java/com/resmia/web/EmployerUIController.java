@@ -13,47 +13,47 @@ import com.resmia.domain.Job;
 import com.resmia.service.JobServiceImpl;
 
 @Controller
-public class UIController {
+public class EmployerUIController {
 	
 	@Autowired
 	private JobServiceImpl jobService;
-	
-	@RequestMapping(value="/")
+
+	@RequestMapping(value="/employer/login")
 	public String index() {
-		return "index";
+		return "employer-index";
 	}
 	
-	@RequestMapping(value="/active-jobs")
+	@RequestMapping(value="/employer/active-jobs")
 	public String activeJobPage(Model model) {
 		model.addAttribute("joblist", jobService.getJobByStatusValue(1));
 		return "active-jobs";
 	}
 	
-	@RequestMapping(value="/draft-jobs")
+	@RequestMapping(value="/employer/draft-jobs")
 	public String draftJobPage(Model model) {
 		model.addAttribute("joblist", jobService.getJobByStatusValue(0));
 		return "draft-jobs";
 	}
 	
-	@RequestMapping(value="/expired-jobs")
+	@RequestMapping(value="/employer/expired-jobs")
 	public String expiredJobPage(Model model) {
 		model.addAttribute("joblist", jobService.getJobByStatusValue(-1));
 		return "expired-jobs";
 	}
 	
-	@RequestMapping(value="/new-job")
+	@RequestMapping(value="/employer/new-job")
 	public String newJobPage(Model model) {
 		model.addAttribute("jobInfo", new Job());
 		return "new-job";
 	}
 	
-	@RequestMapping(value="/view-job/{id}")
+	@RequestMapping(value="/employer/view-job/{id}")
 	public String viewJobPage(@PathVariable Long id, Model model) {
 		model.addAttribute("jobInfo", jobService.getJob(id));
 		return "view-job";
 	}
 	
-	@RequestMapping(value="/update-job/{id}")
+	@RequestMapping(value="/employer/update-job/{id}")
 	public String updateJonPage(@PathVariable Long id, Model model) {
 		model.addAttribute("jobInfo", jobService.getJob(id));
 		return "new-job";
