@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 public class Employer extends User {
 	private String Occupation;
 
+	public Employer(){
+	    setUserType("employer");
+    }
+
 	public String getOccupation() {
 		return Occupation;
 	}

@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.resmia.domain.User;
-import com.resmia.repo.IEmployerRespository;
+import com.resmia.repo.IEmployerRepository;
 import com.resmia.utils.Response;
 
 @Service
 public class UserServiceImpl implements IUserService {
 
 	@Autowired
-	private IEmployerRespository employerRespository;
+	private IEmployerRepository employerRespository;
 
 	@Override
 	public Response login(Object data) {

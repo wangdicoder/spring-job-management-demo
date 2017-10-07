@@ -1,6 +1,7 @@
 package com.resmia.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "resmia_jobs")

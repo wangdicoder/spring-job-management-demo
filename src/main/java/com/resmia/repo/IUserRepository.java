@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.resmia.domain.User;
 
-public interface IUserRespository extends JpaRepository<User, Long>{
+public interface IUserRepository extends JpaRepository<User, Long>{
 	User findByUserName(String userName);
 }
