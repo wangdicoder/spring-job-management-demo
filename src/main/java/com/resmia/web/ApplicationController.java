@@ -25,7 +25,7 @@ public class ApplicationController {
     }
 
     @PostMapping(value = "/applications")
-    public Response saveApplication (@RequestBody Application application){
+    public synchronized Response saveApplication (@RequestBody Application application){
         return applicationService.createApplication(application);
     }
 

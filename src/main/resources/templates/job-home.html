@@ -15,7 +15,7 @@
     <img src="/images/logo.png" alt="logo" height="50"/>
     <div class="login-block">
         <a href="/employer/active-jobs">Employer Entry</a>
-        <a href="/login">Login</a>
+        <a href="/login" th:text="'Applicant ' + ${applicantId}">Login</a>
     </div>
 </header>
 <section class="search-panel">
