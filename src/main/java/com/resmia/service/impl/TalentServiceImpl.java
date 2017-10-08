@@ -4,6 +4,7 @@
 
 package com.resmia.service.impl;
 
+import com.resmia.domain.Talent;
 import com.resmia.domain.User;
 import com.resmia.repo.ITalentRepository;
 import com.resmia.service.interf.ITalentService;
@@ -23,13 +24,13 @@ public class TalentServiceImpl implements ITalentService {
     }
 
     @Override
-    public Response createUser(User user) {
+    public Response createUser(Talent user) {
         talentRepository.save(user);
         return new Response(200, "Add talent successfully", null);
     }
 
     @Override
-    public Response updateUser(User user, Long id) {
+    public Response updateUser(Talent user, Long id) {
         return null;
     }
 

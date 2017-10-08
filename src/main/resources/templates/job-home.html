@@ -3,17 +3,18 @@
 <head>
     <title>Resmia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/job-home.css"/>
 </head>
 <body>
 <header>
     <img src="/images/logo.png" alt="logo" height="50"/>
     <div class="login-block">
-        <a>Sign Up</a>
+        <a href="/employer/active-jobs">Employer Entry</a>
         <a href="/login">Login</a>
     </div>
 </header>
@@ -27,7 +28,17 @@
         <p th:text="${job.location}" class="location"></p>
         <p th:text="${job.income}" class="income"></p>
         <p th:text="${job.description}" class="desc"></p>
-        <button>Apply</button>
+        <button th:onclick="|applyOnClick('${job.id}')|">Apply</button>
+    </div>
+    <div class="modal" id="model">
+        <div class="apply-form">
+            <input id="name" type="text" placeholder="Your Name"/>
+            <input id="intro" type="text" placeholder="Your Introduction"/>
+            <input id="education" type="text" placeholder="Your Education"/>
+            <input id="experience" type="text" placeholder="Your Experience"/>
+            <button onclick="submitOnClick()">Submit</button>
+            <button onclick="cancelOnClick()">Cancel</button>
+        </div>
     </div>
 </section>
 <footer>
@@ -35,9 +46,33 @@
 </footer>
 
 <script>
+    var applyJobId = 0;
+
+    function applyOnClick(id) {
+        applyJobId = id;
+        $('#model').css('display', 'flex');
+    }
     
-    function applyOnClick() {
-        
+    function submitOnClick() {
+        const name = $('#name').val();
+        const intro = $('#intro').val();
+        const education = $('#education').val();
+        const experience = $('#experience').val();
+
+        $.ajax({
+            url: '/api/applications',
+            method: 'POST',
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+            data: JSON.stringify({jobId: applyJobId, applicantId: 1, applicantName: name, applicantIntro: intro, applicantEducation: education, applicantExperience: experience}),
+        }).done(function(data){
+            $('#model').css('display', 'none');
+        });
+
+    }
+    
+    function cancelOnClick() {
+        $('#model').css('display', 'none');
     }
 </script>
 </body>

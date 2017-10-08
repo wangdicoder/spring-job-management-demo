@@ -33,4 +33,9 @@ public class ApplicationServiceImpl implements IApplicationService {
             return new Response(200, "add data failed", null);
         }
     }
+
+    @Override
+    public Response deleteApplication(Long applicationId) {
+        return null;
+    }
 }

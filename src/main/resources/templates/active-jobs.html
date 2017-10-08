@@ -1,96 +1,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Resmia Hire</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Resmia Hire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/>
 </head>
 <body>
 <div class="dashboard">
-	<div class="logo">
-		<img src="/images/logo.png" alt="logo" />
-	</div>
-	<div class="list-container">
-		<li class="active"><a href="#"><i class="material-icons">highlight</i><span>Active Jobs</span></a></li>
-		<li><a href="/employer/draft-jobs.html"><i class="material-icons">drafts</i><span>Draft Jobs</span></a></li>
-		<li><a href="/employer/expired-jobs.html"><i class="material-icons">history</i><span>Expired Jobs</span></a></li>
-		<li><a href="/employer/new-job.html"><i class="material-icons">add</i><span>Post Job</span></a></li>
-	</div>
+    <div class="logo">
+        <img src="/images/logo.png" alt="logo"/>
+    </div>
+    <div class="list-container">
+        <li class="active"><a href="#"><i class="material-icons">highlight</i><span>Active Jobs</span></a></li>
+        <li><a href="/employer/draft-jobs.html"><i class="material-icons">drafts</i><span>Draft Jobs</span></a></li>
+        <li><a href="/employer/expired-jobs.html"><i class="material-icons">history</i><span>Expired Jobs</span></a>
+        </li>
+        <li><a href="/employer/new-job.html"><i class="material-icons">add</i><span>Post Job</span></a></li>
+    </div>
 </div>
 <div class="content-container">
-	<div class="user-row">
-		<button class="exit-btn"><i class="material-icons">exit_to_app</i></button>
-		<span>Hi, Johann</span>
-	</div>
-	<div class="content">
-		<div class="search-box">
-		</div>
-		<table>
-			<tr>
-				<th>#</th>
-				<th>Job Title</th>
-				<th>Category</th>
-				<th>Location</th>
-				<th>Work Type</th>
-				<th>Salary Type</th>
-				<th>Income</th>
-				<th>Contact</th>
-				<th>Youtube</th>
-				<th>Actions</th>
-			</tr>
-			<tr th:each="job,iterStat : ${joblist}">
-				<td th:text="${iterStat.index + 1}"></td>
-				<td th:text="${job.jobTitle}"></td>
-				<td th:text="${job.category}"></td>
-				<td th:text="${job.location}"></td>
-				<td th:text="${job.workType}"></td>
-				<td th:text="${job.salaryType}"></td>
-				<td th:text="'$' + ${job.income}"></td>
-				<td th:text="${job.contactInfo}"></td>
-				<td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">Open</a></td>
-				<td>
-					<button class="btn view-btn" th:onclick="|viewInfo('${job.id}')|">View</button>
-					<button class="btn edit-btn" th:onclick="|editInfo('${job.id}')|">Edit</button>
-					<button class="btn delete-btn" th:onclick="|deleteInfo('${job.id}')|">Delete</button>
-				</td>
-			</tr>
-		</table>
-		<div class="statistic-row">
-			<span th:text="'Total ' + ${#lists.size(joblist)} + ' record(s)'"></span>
-		</div>
-	</div>
+    <div class="user-row">
+        <button class="exit-btn"><i class="material-icons">exit_to_app</i></button>
+        <span>Hi, Johann</span>
+    </div>
+    <div class="content">
+        <div class="search-box">
+        </div>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Job Title</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Work Type</th>
+                <th>Salary Type</th>
+                <th>Income</th>
+                <th>Contact</th>
+                <th>Youtube</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="job,iterStat : ${joblist}">
+                <td th:text="${iterStat.index + 1}"></td>
+                <td th:text="${job.jobTitle}"></td>
+                <td th:text="${job.category}"></td>
+                <td th:text="${job.location}"></td>
+                <td th:text="${job.workType}"></td>
+                <td th:text="${job.salaryType}"></td>
+                <td th:text="'$' + ${job.income}"></td>
+                <td th:text="${job.contactInfo}"></td>
+                <td><a th:href="${job.youtubeLink}" target="_blank" class="youtube-link">Open</a></td>
+                <td>
+                    <button class="btn view-btn" th:onclick="|viewInfo('${job.id}')|">View</button>
+                    <button class="btn edit-btn" th:onclick="|editInfo('${job.id}')|">Edit</button>
+                    <button class="btn delete-btn" th:onclick="|deleteInfo('${job.id}')|">Delete</button>
+                    <button class="btn view-btn" th:onclick="|viewSubmit('${job.id}')|">View Submission</button>
+                </td>
+            </tr>
+        </table>
+        <div class="statistic-row">
+            <span th:text="'Total ' + ${#lists.size(joblist)} + ' record(s)'"></span>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function () {
 
-	
-});
 
-function deleteInfo(id){
-	if(window.confirm('Are you sure to delete it?')){
-		const url = 'api/jobs/' + id;
-		$.ajax({
-			url,
-			type: 'DELETE',
-			success: function(result) {
-				location.reload();
-			}
-		});
-	}
-}
+    });
 
-function editInfo(id){
-	window.location.href = '/employer/update-job/' + id;
-}
+    function deleteInfo(id) {
+        if (window.confirm('Are you sure to delete it?')) {
+            const url = 'api/jobs/' + id;
+            $.ajax({
+                url,
+                type: 'DELETE',
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        }
+    }
 
-function viewInfo(id){
-	window.location.href = '/employer/view-job/' + id;
-}
+    function editInfo(id) {
+        window.location.href = '/employer/update-job/' + id;
+    }
+
+    function viewInfo(id) {
+        window.location.href = '/employer/view-job/' + id;
+    }
+
+    function viewSubmit(id) {
+        window.location.href = '/employer/view-applicants/' + id;
+    }
 </script>
 </body>
 </html>

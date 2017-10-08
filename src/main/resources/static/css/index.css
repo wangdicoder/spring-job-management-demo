@@ -245,3 +245,23 @@ tr:first-child{
 .delete-btn{
 	color: #ff0000;
 }
+
+.talent-profile{
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.name-row{
+    display: flex;
+    align-items: center;
+}
+
+.name-row p, h2{
+    margin: 0;
+}
+
+.name-row p{
+    margin-left: 50px;
+}

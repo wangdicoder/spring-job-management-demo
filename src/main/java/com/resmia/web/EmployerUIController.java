@@ -3,6 +3,7 @@
  */
 package com.resmia.web;
 
+import com.resmia.service.impl.ApplicationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,8 @@ public class EmployerUIController {
 	
 	@Autowired
 	private JobServiceImpl jobService;
+	@Autowired
+    private ApplicationServiceImpl applicationService;
 
 	@RequestMapping(value="/employer/login")
 	public String index() {
@@ -58,4 +61,10 @@ public class EmployerUIController {
 		model.addAttribute("jobInfo", jobService.getJob(id));
 		return "new-job";
 	}
+
+	@RequestMapping(value = "/employer/view-applicants/{id}")
+    public String viewSubmmitPage(@PathVariable Long id, Model model){
+	    model.addAttribute("applicantList", applicationService.getApplications(id));
+	    return "applicant-list";
+    }
 }

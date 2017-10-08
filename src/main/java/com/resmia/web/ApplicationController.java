@@ -25,7 +25,7 @@ public class ApplicationController {
     }
 
     @PostMapping
-    public Response createApplication (@RequestBody Application application){
+    public Response saveApplication (@RequestBody Application application){
         return applicationService.createApplication(application);
     }
 }

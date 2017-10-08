@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Applicant List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+</head>
+<body>
+<div class="dashboard">
+    <div class="logo">
+        <img src="/images/logo.png" alt="logo"/>
+    </div>
+    <div class="list-container">
+        <li><a href="/employer/active-jobs.html"><i class="material-icons">highlight</i><span>Active Jobs</span></a>
+        </li>
+        <li><a href="/employer/draft-jobs.html"><i class="material-icons">drafts</i><span>Draft Jobs</span></a></li>
+        <li><a href="/employer/expired-jobs.html"><i class="material-icons">history</i><span>Expired Jobs</span></a>
+        </li>
+        <li><a href="/employer/new-job.html"><i class="material-icons">add</i><span>Post Job</span></a></li>
+    </div>
+</div>
+<div class="content-container">
+    <div class="user-row">
+        <button class="exit-btn"><i class="material-icons">exit_to_app</i></button>
+        <span>Hi, Johann</span>
+    </div>
+    <div class="content">
+        <div class="talent-profile" th:each="applicant: ${applicantList}">
+            <div class="name-row">
+                <h2 th:text="${applicant.applicantName}"></h2>
+                <p th:text="${applicant.applicantIntro}">Introduction</p>
+            </div>
+            <p th:text="${applicant.applicantEducation}">Education</p>
+            <p th:text="${applicant.applicantExperience}">Experience</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
