@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resmia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/job-home.css"/>
+</head>
+<body>
+<header>
+    <a href="/1"><img src="/images/logo.png" alt="logo" height="50"/></a>
+    <div class="login-block">
+        <a href="/employer/active-jobs">Employer Entry</a>
+        <a href="/">My Applications</a>
+    </div>
+</header>
+
+<section>
+    <div class="job-list" th:each="applicant: ${applicantList}">
+        <div class="my-applications">
+            <h2 th:text="'Project Page: ' + ${applicant.applicantName}"></h2>
+            <p th:text="'Intro: ' + ${applicant.applicantIntro}">Introduction</p>
+            <p th:text="'Education: ' + ${applicant.applicantEducation}">Education</p>
+            <p th:text="'Experience: ' + ${applicant.applicantExperience}">Experience</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

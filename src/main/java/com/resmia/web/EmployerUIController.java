@@ -62,9 +62,9 @@ public class EmployerUIController {
 		return "new-job";
 	}
 
-	@RequestMapping(value = "/employer/view-applicants/{id}")
+	@RequestMapping(value = "/employer/view-applications/{id}")
     public String viewSubmmitPage(@PathVariable Long id, Model model){
 	    model.addAttribute("applicantList", applicationService.getApplications(id));
-	    return "applicant-list";
+	    return "application-list";
     }
 }

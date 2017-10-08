@@ -14,4 +14,5 @@ public interface IApplicationService {
     Response createApplication(Application application);
     Response deleteApplication(Long applicationId);
     Response getApplication(Long jobId, Long applicantId);
+    List<Application> getApplicationsByApplicantId(Long applicantId);
 }

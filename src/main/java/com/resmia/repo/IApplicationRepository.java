@@ -12,4 +12,5 @@ import java.util.ArrayList;
 public interface IApplicationRepository extends JpaRepository<Application, Long> {
     ArrayList<Application> findApplicationsByJobId(Long id);
     Application findApplicationsByJobIdAndAndApplicantId(Long jobId, Long applicantId);
+    ArrayList<Application> findApplicationsByApplicantId(Long id);
 }

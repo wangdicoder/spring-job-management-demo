@@ -26,10 +26,10 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public Response createApplication(Application application) {
-        try{
+        try {
             applicationRepository.save(application);
             return new Response(200, "add data successfully", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             return new Response(200, "add data failed", null);
         }
     }
@@ -41,11 +41,16 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public Response getApplication(Long jobId, Long applicantId) {
-        try{
+        try {
             Application application = applicationRepository.findApplicationsByJobIdAndAndApplicantId(jobId, applicantId);
             return new Response(200, "get data successfully", application);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return new Response(501, "get data failed", null);
         }
+    }
+
+    @Override
+    public List<Application> getApplicationsByApplicantId(Long applicantId) {
+        return applicationRepository.findApplicationsByApplicantId(applicantId);
     }
 }

@@ -33,10 +33,10 @@
         <div class="talent-profile" th:each="applicant: ${applicantList}">
             <div class="name-row">
                 <h2 th:text="${applicant.applicantName}"></h2>
-                <p th:text="${applicant.applicantIntro}">Introduction</p>
+                <p th:text="'Intro: ' + ${applicant.applicantIntro}">Introduction</p>
             </div>
-            <p th:text="${applicant.applicantEducation}">Education</p>
-            <p th:text="${applicant.applicantExperience}">Experience</p>
+            <p th:text="'Education: ' + ${applicant.applicantEducation}">Education</p>
+            <p th:text="'Experience: ' + ${applicant.applicantExperience}">Experience</p>
         </div>
     </div>
 </div>

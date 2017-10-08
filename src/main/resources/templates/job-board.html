@@ -12,10 +12,10 @@
 </head>
 <body>
 <header>
-    <img src="/images/logo.png" alt="logo" height="50"/>
+    <a href="/1"><img src="/images/logo.png" alt="logo" height="50"/></a>
     <div class="login-block">
         <a href="/employer/active-jobs">Employer Entry</a>
-        <a href="/login" th:text="'Applicant ' + ${applicantId}">Login</a>
+        <a th:href="'/' + ${applicantId} + '/applications'">My Applications</a>
     </div>
 </header>
 <section class="search-panel">
@@ -29,18 +29,20 @@
         <p th:text="${job.income}" class="income"></p>
         <p th:text="${job.description}" class="desc"></p>
         <button th:onclick="|applyOnClick('${job.id}')|" class="btn" id="applyBtn">Apply</button>
-        <button th:onclick="|viewSubmitOnClick('${job.id}', '${applicantId}')|" class="btn" id="viewSubmitBtn">View
-            Submission
-        </button>
+        <!--<button th:onclick="|viewSubmitOnClick('${job.id}', '${applicantId}')|" class="btn" id="viewSubmitBtn">View-->
+        <!--Submission-->
+        <!--</button>-->
     </div>
     <div class="modal" id="model">
         <div class="apply-form">
-            <input id="name" type="text" placeholder="Your Name"/>
+            <input id="name" type="text" placeholder="Your Project Page"/>
             <input id="intro" type="text" placeholder="Your Introduction"/>
             <input id="education" type="text" placeholder="Your Education"/>
             <input id="experience" type="text" placeholder="Your Experience"/>
-            <button onclick="submitOnClick()">Submit</button>
-            <button onclick="cancelOnClick()">Cancel</button>
+            <div style="display: flex; margin-top: 20px;">
+                <button onclick="submitOnClick()">Submit</button>
+                <button onclick="cancelOnClick()" style="margin-left: 10px;">Cancel</button>
+            </div>
         </div>
     </div>
     <div class="modal" id="modelSubmit">

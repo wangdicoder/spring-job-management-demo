@@ -33,5 +33,10 @@ public class ApplicationController {
     public Response getApplication (@RequestBody Application application){
         return applicationService.getApplication(application.getJobId(), application.getApplicantId());
     }
+
+    @PostMapping(value = "/applications/{id}")
+    public List<Application> getApplicationsByApplicantId(@PathVariable Long id){
+        return applicationService.getApplicationsByApplicantId(id);
+    }
 }
 
