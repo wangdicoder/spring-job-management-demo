@@ -38,4 +38,14 @@ public class ApplicationServiceImpl implements IApplicationService {
     public Response deleteApplication(Long applicationId) {
         return null;
     }
+
+    @Override
+    public Response getApplication(Long jobId, Long applicantId) {
+        try{
+            Application application = applicationRepository.findApplicationsByJobIdAndAndApplicantId(jobId, applicantId);
+            return new Response(200, "get data successfully", application);
+        }catch (Exception e) {
+            return new Response(501, "get data failed", null);
+        }
+    }
 }

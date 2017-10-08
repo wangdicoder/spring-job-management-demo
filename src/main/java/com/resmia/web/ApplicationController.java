@@ -13,19 +13,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/api/applications")
+@RequestMapping(value="/api")
 public class ApplicationController {
 
     @Autowired
     private ApplicationServiceImpl applicationService;
 
-    @GetMapping
+    @GetMapping(value = "/applications")
     public List<Application> getApplications(@RequestBody Long jobId){
         return applicationService.getApplications(jobId);
     }
 
-    @PostMapping
+    @PostMapping(value = "/applications")
     public Response saveApplication (@RequestBody Application application){
         return applicationService.createApplication(application);
     }
+
+    @PostMapping(value = "/application")
+    public Response getApplication (@RequestBody Application application){
+        return applicationService.getApplication(application.getJobId(), application.getApplicantId());
+    }
 }
+

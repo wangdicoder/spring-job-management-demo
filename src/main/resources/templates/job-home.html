@@ -28,7 +28,8 @@
         <p th:text="${job.location}" class="location"></p>
         <p th:text="${job.income}" class="income"></p>
         <p th:text="${job.description}" class="desc"></p>
-        <button th:onclick="|applyOnClick('${job.id}')|">Apply</button>
+        <button th:onclick="|applyOnClick('${job.id}')|" class="btn" id="applyBtn">Apply</button>
+        <button th:onclick="|viewSubmitOnClick('${job.id}')|" class="btn" id="viewSubmitBtn">View Submission</button>
     </div>
     <div class="modal" id="model">
         <div class="apply-form">
@@ -38,6 +39,15 @@
             <input id="experience" type="text" placeholder="Your Experience"/>
             <button onclick="submitOnClick()">Submit</button>
             <button onclick="cancelOnClick()">Cancel</button>
+        </div>
+    </div>
+    <div class="modal" id="modelSubmit">
+        <div class="apply-form">
+            <h2>ffff</h2>
+            <p></p>
+            <p></p>
+            <p></p>
+            <button onclick="closeOnClick()">Close</button>
         </div>
     </div>
 </section>
@@ -51,6 +61,12 @@
     function applyOnClick(id) {
         applyJobId = id;
         $('#model').css('display', 'flex');
+    }
+
+    function viewSubmitOnClick(id) {
+        $('#modelSubmit').css('display', 'flex');
+
+
     }
     
     function submitOnClick() {
@@ -73,6 +89,12 @@
     
     function cancelOnClick() {
         $('#model').css('display', 'none');
+    }
+
+
+    
+    function closeOnClick() {
+        $('#modelSubmit').css('display', 'none');
     }
 </script>
 </body>

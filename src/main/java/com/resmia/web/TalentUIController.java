@@ -26,4 +26,10 @@ public class TalentUIController {
         model.addAttribute("joblist", jobService.getJobByStatusValue(1));
         return "job-home";
     }
+
+    @RequestMapping(value = "/{id}")
+    public String talentIndex(Model model) {
+        model.addAttribute("joblist", jobService.getJobByStatusValue(1));
+        return "job-home";
+    }
 }

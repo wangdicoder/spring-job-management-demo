@@ -75,10 +75,16 @@ header{
     background-color: #fff;
 }
 
-.job-container button{
+.job-container #applyBtn{
     position: absolute;
     right: 20px;
     top: 30px;
+}
+
+.job-container #viewSubmitBtn{
+    position: absolute;
+    right: 20px;
+    top: 60px;
 }
 
 .title{
