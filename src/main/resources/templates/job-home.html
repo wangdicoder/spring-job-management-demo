@@ -29,7 +29,9 @@
         <p th:text="${job.income}" class="income"></p>
         <p th:text="${job.description}" class="desc"></p>
         <button th:onclick="|applyOnClick('${job.id}')|" class="btn" id="applyBtn">Apply</button>
-        <button th:onclick="|viewSubmitOnClick('${job.id}')|" class="btn" id="viewSubmitBtn">View Submission</button>
+        <button th:onclick="|viewSubmitOnClick('${job.id}', '${applicantId}')|" class="btn" id="viewSubmitBtn">View
+            Submission
+        </button>
     </div>
     <div class="modal" id="model">
         <div class="apply-form">
@@ -43,10 +45,13 @@
     </div>
     <div class="modal" id="modelSubmit">
         <div class="apply-form">
-            <h2>ffff</h2>
-            <p></p>
-            <p></p>
-            <p></p>
+            <div class="model-result">
+                <h2 id="mySubmitName"></h2>
+                <p id="mySubmitIntro"></p>
+                <p id="mySubmitEdu"></p>
+                <p id="mySubmitExp"></p>
+            </div>
+            <div class="model-warning">You didn't submit any information for this job</div>
             <button onclick="closeOnClick()">Close</button>
         </div>
     </div>
@@ -63,12 +68,31 @@
         $('#model').css('display', 'flex');
     }
 
-    function viewSubmitOnClick(id) {
+    function viewSubmitOnClick(jobId, applicantId) {
         $('#modelSubmit').css('display', 'flex');
+        $.ajax({
+            url: '/api/application',
+            method: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({jobId: jobId, applicantId: applicantId}),
+        }).done(function (data) {
+            const result = data.data;
+            if (result) {
+                $('.model-result').css('display', 'block');
+                $('.model-warning').css('display', 'none');
 
-
+                $('#mySubmitName').text(result.applicantName);
+                $('#mySubmitIntro').text(result.applicantIntro);
+                $('#mySubmitEdu').text(result.applicantEducation);
+                $('#mySubmitExp').text(result.applicantExperience);
+            } else {
+                $('.model-warning').css('display', 'block');
+                $('.model-result').css('display', 'none');
+            }
+        });
     }
-    
+
     function submitOnClick() {
         const name = $('#name').val();
         const intro = $('#intro').val();
@@ -78,21 +102,27 @@
         $.ajax({
             url: '/api/applications',
             method: 'POST',
-            contentType:"application/json; charset=utf-8",
-            dataType:"json",
-            data: JSON.stringify({jobId: applyJobId, applicantId: 1, applicantName: name, applicantIntro: intro, applicantEducation: education, applicantExperience: experience}),
-        }).done(function(data){
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({
+                jobId: applyJobId,
+                applicantId: 1,
+                applicantName: name,
+                applicantIntro: intro,
+                applicantEducation: education,
+                applicantExperience: experience
+            }),
+        }).done(function (data) {
             $('#model').css('display', 'none');
         });
 
     }
-    
+
     function cancelOnClick() {
         $('#model').css('display', 'none');
     }
 
 
-    
     function closeOnClick() {
         $('#modelSubmit').css('display', 'none');
     }
