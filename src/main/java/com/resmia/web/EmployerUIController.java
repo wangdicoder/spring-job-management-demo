@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.resmia.domain.Job;
-import com.resmia.service.JobServiceImpl;
+import com.resmia.service.impl.JobServiceImpl;
 
 @Controller
 public class EmployerUIController {

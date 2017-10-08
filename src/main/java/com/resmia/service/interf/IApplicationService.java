@@ -2,7 +2,7 @@
  * Created by wangdi on 7/10/17.
  */
 
-package com.resmia.service;
+package com.resmia.service.interf;
 
 import com.resmia.domain.Application;
 import com.resmia.utils.Response;

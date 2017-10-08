@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.resmia.domain.Job;
-import com.resmia.service.JobServiceImpl;
+import com.resmia.service.impl.JobServiceImpl;
 import com.resmia.utils.Response;
 
 @RestController

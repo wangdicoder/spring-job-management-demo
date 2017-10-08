@@ -2,10 +2,11 @@
  * Created by wangdi on 7/10/17.
  */
 
-package com.resmia.service;
+package com.resmia.service.impl;
 
 import com.resmia.domain.Application;
 import com.resmia.repo.IApplicationRepository;
+import com.resmia.service.interf.IApplicationService;
 import com.resmia.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ApplicationServiceImpl implements IApplicationService{
+public class ApplicationServiceImpl implements IApplicationService {
 
     @Autowired
     private IApplicationRepository applicationRepository;

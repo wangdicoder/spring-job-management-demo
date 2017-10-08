@@ -1,4 +1,4 @@
-package com.resmia.service;
+package com.resmia.service.interf;
 
 import com.resmia.utils.Response;
 import com.resmia.domain.User;

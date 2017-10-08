@@ -1,4 +1,4 @@
-package com.resmia.service;
+package com.resmia.service.interf;
 
 import java.util.ArrayList;
 import java.util.List;

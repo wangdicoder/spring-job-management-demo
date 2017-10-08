@@ -5,7 +5,7 @@
 package com.resmia.web;
 
 import com.resmia.domain.Application;
-import com.resmia.service.ApplicationServiceImpl;
+import com.resmia.service.impl.ApplicationServiceImpl;
 import com.resmia.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
